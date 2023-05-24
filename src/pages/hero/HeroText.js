@@ -16,18 +16,17 @@ export default function HeroText() {
   const header = (
     <div>
       {`Exchange any crypto instantly.`}
-    </div> )
-    ,content = (
-    <div>
-      {`Exchange Bitcoin and 500+ altcoins in a fast, simple, and secure way.`}
-    </div>
-  );
+    </div>)
+    , content = (
+      <div>
+        {`Exchange Bitcoin and 500+ altcoins in a fast, simple, and secure way.`}
+      </div>
+    );
 
   return (
-    <Box maxWidth={['100%','20rem']}padding={['0','0 12rem 0 0']}>
-      <Typography variant='h4'>{header}</Typography>
-      <Divider>CENTER</Divider>
-      {content}
+    <Box maxWidth={['100%', '30rem']} padding={['1rem', '1rem 12rem 0 0']}>
+      <Typography variant='h4'color='#fff'>{header}</Typography>
+      <Typography variant='p'>{content}</Typography>
     </Box>
   );
 }
