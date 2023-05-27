@@ -58,22 +58,35 @@ export default function HeroText() {
           }}
         >
           {header}</Typography>
-        <Typography variant='p' lineHeight={[ '1.5rem']}>{content}</Typography>
+        <Typography variant='p' lineHeight={['1.5rem']} color='#ffffff80'>{content}</Typography>
 
       </Box>
       <ThemeProvider theme={theme}>
-        <Box sx={{ width: "100%" ,padding:'1rem'}}>
+        <Box sx={{ width: "100%", padding: '1rem' }}>
           <Button
             style={{
+              textDecoration: 'none',
               background: 'linear-gradient(45deg, #6be3fe 30%,  #538fff 60%)',
               borderRadius: 3,
               border: 0,
               color: 'white',
               height: 48,
               padding: '0 30px',
-              boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+              boxShadow: '0 1px 3px 1px rgba(255, 105, 135, .3)',
 
-            }}>ABOUT US</Button>
+            }}><Link href='/about'
+              style={{
+                textDecoration: 'none',
+                textTransform: 'capitalize',
+                color: 'whitesmoke',
+                fontSize:'1rem',
+                fontWeight:'900',
+                height: '100%',
+                width: '100%',
+                alignItems: 'center',
+                display: 'flex'
+              }}>About us</Link>
+              </Button>
         </Box>
       </ThemeProvider>
       {/* <Button

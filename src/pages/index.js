@@ -6,7 +6,10 @@ import Buy from './hero/buy'
 import Sidebar from './hero/sidebar'
 import { Box, Divider } from '@mui/material'
 import HeroText from './hero/HeroText'
-
+import Converter from '../../Component/hello'
+import Converters from '../../Component/test'
+import CombinedApp from '../../Component/Changer'
+import CryptoConverter from '../../Component/test'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -21,7 +24,10 @@ export default function Home() {
       <main>
         <Box display={['block','block','flex']} justifyContent='space-between'padding={['2rem 0','3rem 0']}>
           <Sidebar />
-          <Buy />
+          {/* <Buy /> */}
+          <Converter/>
+          {/* <CryptoConverter/> */}
+          {/* <CombinedApp/> */}
           <HeroText />
         </Box>
         <Box padding={['1rem 2rem', '1rem 2rem', '1rem 12rem']}>
