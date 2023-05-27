@@ -2,19 +2,16 @@ import React from 'react';
 import { styled, useTheme, } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import MuiAppBar from '@mui/material/AppBar';
 import CssBaseline from '@mui/material/CssBaseline';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Link from 'next/link';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Button, MenuItem, Select, Menu, ListItemButton, ListItemText } from '@mui/material';
-import { ChevronRight, Close } from '@mui/icons-material';
+import { Button, MenuItem, Menu } from '@mui/material';
+import { Close } from '@mui/icons-material';
 
 const drawerWidth = 240;
 const menuItems = [
@@ -92,14 +89,18 @@ export default function Navbar() {
           </Typography>
         </Box>
         <Box display={['none', 'none', 'flex']}>
-          <Button
-            aria-controls="menu"
-            aria-haspopup="true"
-            onClick={handleMenuOpen}
-            endIcon={<ExpandMoreIcon />}
-          >
-            All Products
-          </Button>
+          <Box display='flex' alignItems='center' cursor='pointer'>
+            <Typography variant="body2" sx={{ cursor: 'pointer' }}marginRight='-1rem' onClick={handleMenuOpen}>
+              All Products
+            </Typography>
+            <Button
+              aria-controls="menu"
+              aria-haspopup="true"
+              onClick={handleMenuOpen}
+              endIcon={<ExpandMoreIcon />}
+            >
+            </Button>
+          </Box>
           <Menu
             id="menu"
             anchorEl={anchorEl}
@@ -115,14 +116,14 @@ export default function Navbar() {
             }}
           >
             {menuItems.map((item, index) => (
-        <Box key={index}height='20rem'
-        backgroundColor='primary.main'
-        >
-          <Typography >
-            {item.text}
-            </Typography>
-        </Box>
-      ))}
+              <Box key={index} height='20rem'
+                backgroundColor='primary.main'
+              >
+                <Typography >
+                  {item.text}
+                </Typography>
+              </Box>
+            ))}
           </Menu>
           <Button style={{ textTransform: 'capitalize' }}>
             <Link href="/about" style={Styles}>
@@ -174,7 +175,7 @@ export default function Navbar() {
           </IconButton>
         </DrawerHeader>
         <List>
-      
+
           <Menu
             id="menu"
             anchorEl={anchorEl}
@@ -189,28 +190,28 @@ export default function Navbar() {
               horizontal: 'right',
             }}
           >
-     {menuItems.map((item, index) => {
-        if (item.button) {
-          return (
-            <Button
-              key={index}
-              aria-controls={item.ariaControls}
-              aria-haspopup={item.ariaHasPopup}
-              onClick={item.onClick}
-              endIcon={item.endIcon}
-            >
-              {item.text}
-            </Button>
-          );
-        }
-        return (
-          <MenuItem key={index}>
-            <Typography variant={item.variant}>{item.text}</Typography>
-          </MenuItem>
-        );
-      })}
+            {menuItems.map((item, index) => {
+              if (item.button) {
+                return (
+                  <Button
+                    key={index}
+                    aria-controls={item.ariaControls}
+                    aria-haspopup={item.ariaHasPopup}
+                    onClick={item.onClick}
+                    endIcon={item.endIcon}
+                  >
+                    {item.text}
+                  </Button>
+                );
+              }
+              return (
+                <MenuItem key={index}>
+                  <Typography variant={item.variant}>{item.text}</Typography>
+                </MenuItem>
+              );
+            })}
           </Menu>
-         <Divider color="#323a40" flexItem sx={{ borderRightWidth: 0.4 }} />
+          <Divider color="#323a40" flexItem sx={{ borderRightWidth: 0.4 }} />
           <Button style={{ textTransform: 'capitalize' }}>
             <Link href="/receive" style={Styles}>
               Receive
