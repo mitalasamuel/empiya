@@ -1,7 +1,7 @@
 import '@/styles/globals.css'
 import { Box } from '@mui/system'
 import Footer from '../../Component/Footer'
-import Navbar from '../../Component/New'
+import Navbar from '../../Component/Navbar'
 import 'firebase/auth';
 import { ThemeProvider } from '@mui/material/styles';
 
@@ -10,6 +10,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import theme from '@/styles/theme';
+import ErrorBoundary from '../../Component/ErrorBoundary';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -30,9 +31,13 @@ const app = initializeApp(firebaseConfig);
 export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
-      <Navbar/>
-      <Component {...pageProps} />
-      <Footer/>
+      <ErrorBoundary>
+        <Navbar />
+        <Box margin='4rem 0'>
+          <Component {...pageProps} />
+        </Box>
+        <Footer />
+      </ErrorBoundary>
     </ThemeProvider>)
 }
 // 181c1f

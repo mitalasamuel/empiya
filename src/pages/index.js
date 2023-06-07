@@ -1,18 +1,27 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-import Buy from './hero/buy'
-import Sidebar from './hero/sidebar'
-import { Box, Divider } from '@mui/material'
-import HeroText from './hero/HeroText'
-import Converter from '../../Component/hello'
-import Converters from '../../Component/test'
-import CombinedApp from '../../Component/Changer'
-import CryptoConverter from '../../Component/test'
-const inter = Inter({ subsets: ['latin'] })
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { Box, Divider } from '@mui/material';
+import Head from 'next/head';
+import Buy from './hero/buy';
+import Sidebar from './hero/sidebar';
+import HeroText from './hero/HeroText';
+import Converter from '../../Component/empiyaConvert';
 
 export default function Home() {
+  const router = useRouter();
+
+  // useEffect(() => {
+  //   const isLoggedIn = true;
+
+  //   if (isLoggedIn) {
+  //     // User is logged in, display an alert
+  //     alert('You are already logged in!');
+  //   } else {
+  //     // User is not logged in, redirect to the login page
+  //     router.push('/signup');
+  //   }
+  // }, []);
+
   return (
     <>
       <Head>
@@ -22,18 +31,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Box display={['block','block','flex']} justifyContent='space-between'padding={['2rem 0','3rem 0']}>
+        <Box display={['block', 'block', 'flex']} justifyContent="space-between" padding={['2rem 0', '3rem 0']}>
           <Sidebar />
-          {/* <Buy /> */}
-          <Converter/>
-          {/* <CryptoConverter/> */}
-          {/* <CombinedApp/> */}
-          <HeroText />
+          <Converter />
+          <HeroText/>
         </Box>
         <Box padding={['1rem 2rem', '1rem 2rem', '1rem 12rem']}>
-                <Divider color='#323a40' sx={{ borderBottomWidth: '.1px' }} />
-            </Box>
-             </main>
+          <Divider color="#323a40" sx={{ borderBottomWidth: '.1px' }} />
+        </Box>
+      </main>
     </>
-  )
+  );
 }

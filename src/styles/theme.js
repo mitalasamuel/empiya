@@ -8,6 +8,9 @@ const theme = createTheme({
     secondary: {
       main: '#111',
     },
+    tertiary:{
+      main:'#1d2939'
+    }
   },
   typography: {
     fontWeightBold: 900,

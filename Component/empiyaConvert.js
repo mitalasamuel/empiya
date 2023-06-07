@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Box, Button, MenuItem, Select, TextField, Typography } from '@mui/material';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
-import { countries, getCountryFlag } from './utils';
-
 
 const useStyles = makeStyles({
   input: {
@@ -39,10 +37,10 @@ const Converter = () => {
         const coins = response.data.rates;
         const flags = {};
         Object.entries(coins).forEach(([currency, rate]) => {
-          const flag = getCountryFlag(currency.toUpperCase());
-          if (flag) {
-            flags[currency.toUpperCase()] = flag;
-          }
+          flags[currency.toUpperCase()] = `https://www.countryflags.io/${currency.slice(
+            0,
+            2
+          )}/flat/64.png`;
         });
         setFlags(flags);
       } catch (error) {
@@ -50,25 +48,10 @@ const Converter = () => {
       }
     };
     
-    
 
     fetchFlags();
   }, []);
 
-  // const convertCurrency = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `https://api.exchangerate-api.com/v4/latest/${baseCurrency}`
-  //     );
-  //     const rates = response.data.rates;
-  //     const rate = rates[targetCurrency];
-  //     const convertedAmount = amount * rate;
-  //     setResult(` ${convertedAmount} ${targetCurrency}`);
-  //   } catch (error) {
-  //     setResult("Invalid currency selection");
-  //   }
-  // };
-  
   const convertCurrency = async () => {
     try {
       const response = await axios.get(
@@ -77,12 +60,13 @@ const Converter = () => {
       const rates = response.data.rates;
       const rate = rates[targetCurrency];
       const convertedAmount = amount * rate;
-      setResult(` ${convertedAmount} ${targetCurrency}`);
+      setResult(`${convertedAmount} ${targetCurrency}`);
     } catch (error) {
       setResult("Invalid currency selection");
     }
   };
   
+
   return (
     <Box
       component="form"
@@ -124,7 +108,7 @@ const Converter = () => {
           value={amount}
           onChange={(e) => setAmount(parseFloat(e.target.value))}
         />
-        {/* <Select value={baseCurrency} onChange={(e) => setBaseCurrency(e.target.value)}>
+        <Select value={baseCurrency} onChange={(e) => setBaseCurrency(e.target.value)}>
           {Object.keys(flags).map((currency) => (
             <MenuItem key={currency} value={currency}>
               <img
@@ -136,16 +120,7 @@ const Converter = () => {
               {currency}
             </MenuItem>
           ))}
-        </Select> */}
-        <Select value={baseCurrency} onChange={(e) => setBaseCurrency(e.target.value)}>
-  {Object.keys(flags).map((currency) => (
-    <MenuItem key={currency} value={currency}>
-      {flags[currency]}
-      {currency}
-    </MenuItem>
-  ))}
-</Select>
-
+        </Select>
       </Box>
       <Box
         display="flex"

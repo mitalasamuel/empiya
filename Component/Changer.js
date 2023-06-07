@@ -132,7 +132,7 @@ const CombinedApp = () => {
                 textAlign: "center",
               }}
             >
-              </p>
+            </p>
           </div>
 
           {/* body section */}
@@ -266,7 +266,6 @@ const CombinedApp = () => {
           </div>
         </div>
       </section>
-
       {/* Converter */}
       <div>
         <TextField

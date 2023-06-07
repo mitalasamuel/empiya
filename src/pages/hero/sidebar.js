@@ -7,7 +7,9 @@ const Sidebar = () => {
     textDecoration: 'none',
     padding: '0 1rem',
     color: '#678',
-    fontSize: '1.06rem'
+    fontSize: '1.06rem',
+    textTransform:'capitalise'
+
   };
 
   return (
@@ -78,7 +80,8 @@ const Sidebar = () => {
         <Box margin={['0', '0 0 0 0']}>
           <Box sx={{ width: "100%" }} display={['flex']} alignItems='center'>
             <Button>
-              <Link href='/' style={styles}>Send</Link>
+              <Link href='/' style={styles}    textTransform='capitalise'
+>Send</Link>
             </Button>
           </Box>
         </Box>
